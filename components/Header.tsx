@@ -1,0 +1,3 @@
+"use client";
+import Link from "next/link";import {useState} from "react";
+export default function Header(){const [open,setOpen]=useState(false);return <header className="header"><Link className="brand" href="/"><span className="mark">R</span><span><b>RABBITEK</b><small>SOLUTIONS</small></span></Link><button className="menu" aria-label="Toggle menu" onClick={()=>setOpen(!open)}>☰</button><nav className={open?"open":""}>{[["Home","/"],["About","/about"],["Services","/services"],["Our Work","/work"],["Contact","/contact"]].map(([n,h])=><Link key={h} href={h} onClick={()=>setOpen(false)}>{n}</Link>)}<Link className="btn small" href="/contact">Start a Project →</Link></nav></header>}
