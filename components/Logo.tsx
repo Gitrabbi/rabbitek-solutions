@@ -1,0 +1,1 @@
+export default function Logo(){return <span className="brand-logo" aria-label="Rabbitek Solutions"><span className="logo-glyph"><i className="pixel a"/><i className="pixel b"/><i className="pixel c"/><i className="pixel d"/><b>R</b></span><span className="logo-type"><strong>RABBITEK</strong><em>SOLUTIONS</em><small>CREATIVITY HUB</small></span></span>}
