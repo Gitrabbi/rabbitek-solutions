@@ -1,1 +1,25 @@
-"use client";import {FormEvent,useState} from "react";export default function Contact(){const [sent,setSent]=useState(false);function submit(e:FormEvent){e.preventDefault();setSent(true)}return <><section className="page-hero"><p className="eyebrow">GET IN TOUCH</p><h1>Let’s Build Something <span>Great Together.</span></h1><p>Have a project in mind? Tell us what you need and what problem you want to solve.</p></section><section className="section light"><div className="contact-grid"><form onSubmit={submit}><h2>Tell Us About Your Project</h2><label>Name<input required name="name"/></label><label>Email<input required type="email" name="email"/></label><label>What do you need?<select name="service"><option>Website & E-commerce</option><option>Custom Software</option><option>AI & Automation</option><option>Data & Analytics</option><option>Digital Growth</option><option>Consultation / Other</option></select></label><label>Tell us about your project<textarea required rows={6} name="message"/></label><button className="btn" type="submit">Send Project Enquiry →</button>{sent&&<p className="success">Thanks — the interface is working. We’ll connect this form to email before launch.</p>}</form><aside><p className="eyebrow">START A CONVERSATION</p><h2>Good projects start with a clear problem.</h2><p>Share your goals, current challenges and what success would look like. Rabbitek can then recommend an appropriate approach.</p><div className="quote">Ideas → Systems → Growth</div></aside></div></section></>}
+"use client";
+import {FormEvent,useState} from "react";
+
+export default function Contact(){
+ const [status,setStatus]=useState<"idle"|"sending"|"sent"|"error">("idle");
+ async function submit(e:FormEvent<HTMLFormElement>){
+  e.preventDefault(); setStatus("sending");
+  const form=e.currentTarget; const data=new FormData(form);
+  try{
+   const response=await fetch("https://formsubmit.co/ajax/info@rabbiteksolutions.com",{method:"POST",headers:{"Accept":"application/json"},body:data});
+   if(!response.ok) throw new Error("Unable to send");
+   form.reset(); setStatus("sent");
+  }catch{setStatus("error")}
+ }
+ return <><section className="contact-hero"><div><p className="eyebrow">START A PROJECT</p><h1>What could we<br/><span>build together?</span></h1><p>Tell us about the idea, workflow or business challenge. A useful solution starts with understanding what needs to change.</p></div><div className="contact-signal"><div className="signal-core">R</div><i/><i/><i/><span>PROJECT SIGNAL</span></div></section>
+ <section className="contact-studio"><div className="contact-intro"><p className="eyebrow">PROJECT ENQUIRY</p><h2>Start with the challenge.</h2><p>You do not need to know the technical solution yet. Give us the context, what you want to improve and what a good outcome looks like.</p><div className="contact-steps"><span><b>01</b> Share the challenge</span><span><b>02</b> Explore the opportunity</span><span><b>03</b> Shape the solution</span></div></div>
+ <form className="studio-form" onSubmit={submit}><input type="hidden" name="_subject" value="New Rabbitek project enquiry"/><input type="hidden" name="_template" value="table"/><input type="text" name="_honey" className="honey" tabIndex={-1} autoComplete="off"/>
+ <div className="form-row"><label><span>YOUR NAME *</span><input required name="name" placeholder="How should we address you?"/></label><label><span>EMAIL *</span><input required type="email" name="email" placeholder="you@company.com"/></label></div>
+ <div className="form-row"><label><span>COMPANY / ORGANISATION</span><input name="company" placeholder="Optional"/></label><label><span>WHAT ARE YOU INTERESTED IN?</span><select name="service" defaultValue=""><option value="" disabled>Select a capability</option><option>Web & E-commerce</option><option>Custom Software</option><option>AI & Automation</option><option>Data & Analytics</option><option>Digital Growth</option><option>Support & Improvement</option><option>Not sure yet</option></select></label></div>
+ <label><span>TELL US ABOUT THE PROJECT *</span><textarea required rows={7} name="message" placeholder="What are you trying to build, improve or automate? What is happening today?"/></label>
+ <button className="btn submit-btn" disabled={status==="sending"} type="submit">{status==="sending"?"Sending…":"Send Project Enquiry →"}</button>
+ {status==="sent"&&<p className="form-note success">Thanks. Your project enquiry has been sent.</p>}{status==="error"&&<p className="form-note form-error">We couldn't send the enquiry. Please try again in a moment.</p>}
+ </form></section>
+ <section className="contact-bottom"><div><p className="eyebrow">A GOOD BRIEF DOESN'T NEED TO BE PERFECT</p><h2>Bring the problem.<br/><span>We’ll explore the possibilities.</span></h2></div><p>Whether you need a website, an internal system, better visibility from your data or an automation idea brought to life, the conversation can start here.</p></section></>
+}
