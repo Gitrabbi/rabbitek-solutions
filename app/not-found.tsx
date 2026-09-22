@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <section className="not-found"><p className="eyebrow">404 • SIGNAL LOST</p><h1>This page wandered<br/><span>off the map.</span></h1><p>The link may have changed, or the page may no longer exist.</p><div className="actions"><Link className="btn" href="/">Return Home →</Link><Link className="outline" href="/contact">Contact Rabbitek</Link></div></section>}
