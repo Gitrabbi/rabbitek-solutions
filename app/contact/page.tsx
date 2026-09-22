@@ -8,7 +8,13 @@ export default function Contact(){
   const form=e.currentTarget; const data=new FormData(form);
   try{
    const response=await fetch("https://formsubmit.co/ajax/info@rabbiteksolutions.com",{method:"POST",headers:{"Accept":"application/json"},body:data});
-   if(!response.ok) throw new Error("Unable to send");
+   let result:{success?:boolean|string;message?:string}={};
+   try{result=await response.json()}catch{}
+   const accepted=response.ok&&(result.success===true||result.success==="true");
+   if(!accepted){
+    console.error("FormSubmit response",response.status,result);
+    throw new Error(result.message||"Unable to send");
+   }
    form.reset(); setStatus("sent");
   }catch{setStatus("error")}
  }
