@@ -1,4 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Our Work",
+  description: "Explore selected Rabbitek Solutions projects spanning business operations, customer experiences, software, analytics and energy data.",
+  alternates: { canonical: "/work" },
+  openGraph: {
+    title: "Our Work | Rabbitek Solutions",
+    description: "Digital products built around real operations, from business workflow platforms to data and energy analytics.",
+    url: "/work",
+  },
+};
 
 const projects = [
   {
