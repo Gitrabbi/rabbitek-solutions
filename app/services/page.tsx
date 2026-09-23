@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Digital Services",
+  description: "Explore Rabbitek Solutions services in web and e-commerce, custom software, AI and automation, data analytics, digital growth and ongoing technical support.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Digital Services | Rabbitek Solutions",
+    description: "Web, software, AI, automation and data solutions designed around practical business needs.",
+    url: "/services",
+  },
+};
+
 const services=[
 ["01","Web & E-commerce","Digital experiences that make a strong first impression and give customers a clear path to act.",["Business websites","Landing pages","E-commerce experiences","Responsive design"],"WEB"],
 ["02","Custom Software","Purpose-built applications for the workflows, information and operations that generic tools cannot fit.",["Business applications","Customer portals","Operational systems","Workflow tools"],"SOFTWARE"],
