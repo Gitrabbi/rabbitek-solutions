@@ -52,6 +52,7 @@ const organizationStructuredData = {
   url: "https://rabbiteksolutions.com/",
   logo: "https://rabbiteksolutions.com/images/rabbitek-social-share.png",
   email: "mailto:mail@rabbiteksolutions.com",
+  sameAs: ["https://www.facebook.com/rabbiteksolutions/"],
   description:
     "Smart digital solutions for businesses through web development, software development, AI and automation, data analytics and digital growth.",
 };
