@@ -1,3 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Learn how Rabbitek Solutions combines creativity, software, automation and data to build practical digital solutions for businesses.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Rabbitek Solutions",
+    description: "A creativity hub for useful technology, combining design, software, automation and data.",
+    url: "/about",
+  },
+};
+
 const values=[["01","Creativity","See possibilities beyond the obvious and give useful ideas a distinctive form."],["02","Problem Solving","Understand the real challenge before deciding what technology belongs in the solution."],["03","Innovation","Explore new tools and approaches when they create meaningful practical value."],["04","Collaboration","Build through conversation, feedback and a shared understanding of the goal."]];
 export default function About(){return <><section className="about-hero"><div><p className="eyebrow">ABOUT RABBITEK</p><h1>A creativity hub for <span>useful technology.</span></h1><p>Rabbitek Solutions brings design, software, automation and data together to help businesses turn ideas and operational challenges into digital products.</p></div><div className="about-mark"><div className="about-core">R</div><span>IDEAS</span><span>TECHNOLOGY</span><span>GROWTH</span></div></section><section className="about-story"><div className="story-label"><p className="eyebrow">OUR STORY</p><span>EVOLVING WITH THE POSSIBILITIES</span></div><div className="story-copy"><h2>We started with digital presence.<br/><span>We kept building.</span></h2><p>Rabbitek began with web design and digital marketing. As the problems businesses wanted to solve became broader, so did the work—toward custom software, data, automation and AI-powered digital experiences.</p><p>The direction remains simple: understand what needs to change, then use technology creatively and practically to help make that change possible.</p></div></section><section className="values-section"><div className="studio-section-head"><div><p className="eyebrow">WHAT GUIDES US</p><h2>Principles behind<br/><span>the work.</span></h2></div><p>Technology changes quickly. These ideas keep the work grounded.</p></div><div className="values-grid">{values.map(([n,t,d])=><article key={t}><b>{n}</b><div className="value-line"/><h3>{t}</h3><p>{d}</p></article>)}</div></section><section className="about-philosophy"><div className="philosophy-no">R</div><div><p className="eyebrow">OUR PHILOSOPHY</p><h2>“Technology should make work simpler and create practical opportunities for businesses.”</h2><p>That idea shapes how we think about every website, system, dashboard and automation we build.</p></div></section><section className="work-cta"><p className="eyebrow">BUILD WITH US</p><h2>Have something worth <span>creating?</span></h2><p>Bring the idea, challenge or workflow. Let’s explore what technology can do with it.</p><Link className="btn" href="/contact">Start a Conversation →</Link></section></>}
