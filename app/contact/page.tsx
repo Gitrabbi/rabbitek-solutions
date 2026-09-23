@@ -7,7 +7,7 @@ export default function Contact(){
   e.preventDefault(); setStatus("sending");
   const form=e.currentTarget; const data=new FormData(form);
   try{
-   const response=await fetch("https://formsubmit.co/ajax/info@rabbiteksolutions.com",{method:"POST",headers:{"Accept":"application/json"},body:data});
+   const response=await fetch("https://formsubmit.co/ajax/mail@rabbiteksolutions.com",{method:"POST",headers:{"Accept":"application/json"},body:data});
    let result:{success?:boolean|string;message?:string}={};
    try{result=await response.json()}catch{}
    const accepted=response.ok&&(result.success===true||result.success==="true");
