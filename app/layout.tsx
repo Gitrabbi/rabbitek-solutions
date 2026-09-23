@@ -50,7 +50,12 @@ const organizationStructuredData = {
   "@id": "https://rabbiteksolutions.com/#organization",
   name: "Rabbitek Solutions",
   url: "https://rabbiteksolutions.com/",
-  logo: "https://rabbiteksolutions.com/images/rabbitek-social-share.png",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://rabbiteksolutions.com/images/rabbitek-logo.svg",
+    width: 512,
+    height: 512,
+  },
   email: "mailto:mail@rabbiteksolutions.com",
   sameAs: ["https://www.facebook.com/rabbiteksolutions/"],
   description:
