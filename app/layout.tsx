@@ -44,10 +44,29 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const organizationStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://rabbiteksolutions.com/#organization",
+  name: "Rabbitek Solutions",
+  url: "https://rabbiteksolutions.com/",
+  logo: "https://rabbiteksolutions.com/images/rabbitek-social-share.png",
+  email: "mailto:mail@rabbiteksolutions.com",
+  sameAs: ["https://www.facebook.com/rabbiteksolutions/"],
+  description:
+    "Smart digital solutions for businesses through web development, software development, AI and automation, data analytics and digital growth.",
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationStructuredData).replace(/</g, "\\u003c"),
+          }}
+        />
         <Header />
         <main>{children}</main>
         <Footer />
